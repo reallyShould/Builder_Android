@@ -1,9 +1,2 @@
-# A builder_android Flet app
-
-An example of a minimal Flet app.
-
-To run the app:
-
-```
-flet run [app_directory]
-```
+# Builder_Android
+📱 A mobile application for selecting the configuration and assembly of a PC.

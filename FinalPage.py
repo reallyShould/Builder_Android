@@ -19,10 +19,7 @@ class FinalPage:
         return ft.View("/final", controls=[col], bgcolor="white")
 
     def get_curl(self):
-        headers = {
-            # Already added when you pass json=
-            # 'Content-Type': 'application/json',
-        }
+        headers = {}
 
         json_data = {
             "price": self.build["price"],
