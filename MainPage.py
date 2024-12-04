@@ -1,4 +1,3 @@
-# MainPage.py
 import flet as ft
 
 class MainPage:
@@ -17,8 +16,8 @@ class MainPage:
         self.label = ft.Container(
             content=ft.Column(
                 controls=[
-                    ft.Text("Builder", size=30, color="Black", weight=ft.FontWeight.BOLD),
-                    ft.Text("by reallyShould", size=16, color="Black"),
+                    ft.Text("Builder", size=30, color="Black", weight=ft.FontWeight.BOLD, font_family="Verdana"),
+                    ft.Text("by reallyShould", size=16, color="Black", font_family="Verdana"),
                 ],
                 spacing=1
             ), 
@@ -63,15 +62,8 @@ class MainPage:
             bgcolor="gray",
         )
 
-        self.start_btn2 = ft.CupertinoFilledButton(
-            content=ft.Text("Start"),
-            opacity_on_click=0.3,
-            on_click=lambda e: self.route(),
-            width=self.page.width,
-        )
-
         self.start_btn = ft.CupertinoButton(
-            content=ft.Text("Start", color="white"),
+            content=ft.Text("Start", color="white", font_family="Verdana"),
             bgcolor="black",
             border_radius=ft.border_radius.all(3),
             opacity_on_click=0.5,
