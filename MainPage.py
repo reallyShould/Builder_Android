@@ -7,8 +7,23 @@ class MainPage:
         self.build = build
 
     def get_view(self):
-        self.main_label = ft.Text("Builder", size=30, color="Black", weight=ft.FontWeight.BOLD)
-        self.additional_label = ft.Text("by reallyShould", size=16, color="Black")
+        navigation_bar = ft.NavigationBar(
+            destinations=[
+                ft.NavigationDestination(icon=ft.icons.EXPLORE, label="Auto", selected_icon=ft.icons.EXPLORE),
+                ft.NavigationDestination(icon=ft.icons.COMMUTE, label="Custom"),
+            ]
+        )
+
+        self.label = ft.Container(
+            content=ft.Column(
+                controls=[
+                    ft.Text("Builder", size=30, color="Black", weight=ft.FontWeight.BOLD),
+                    ft.Text("by reallyShould", size=16, color="Black"),
+                ],
+                spacing=1
+            ), 
+            padding=10
+        )
 
         self.price_field = ft.TextField(
             label="Price",
@@ -48,16 +63,25 @@ class MainPage:
             bgcolor="gray",
         )
 
-        self.start_btn = ft.CupertinoFilledButton(
+        self.start_btn2 = ft.CupertinoFilledButton(
             content=ft.Text("Start"),
             opacity_on_click=0.3,
-            on_click=lambda e: self.route()
+            on_click=lambda e: self.route(),
+            width=self.page.width,
+        )
+
+        self.start_btn = ft.CupertinoButton(
+            content=ft.Text("Start", color="white"),
+            bgcolor="black",
+            border_radius=ft.border_radius.all(3),
+            opacity_on_click=0.5,
+            on_click=lambda e: self.route(),
+            width=self.page.width,
         )
 
         col = ft.Column(
             controls=[
-                self.main_label,
-                self.additional_label,
+                self.label,
                 self.price_field,
                 self.configDD,
                 self.cpuDD,
@@ -66,7 +90,7 @@ class MainPage:
             ],
         )
 
-        return ft.View("/", controls=[col], bgcolor="white")
+        return ft.View("/", controls=[col], bgcolor="white", appbar=navigation_bar)
     
     def route(self):
         self.build["price"] = self.price_field.value

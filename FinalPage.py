@@ -14,24 +14,17 @@ class FinalPage:
 
         ####### CPU #######
         cpu = out["cpu"]
-        self.CpuTitle = ft.Text(cpu["name"], size=24, color="Black", weight=ft.FontWeight.BOLD)
-        self.CpuSocket = ft.Text(f"Socket: {cpu['socket']}", size=16, color="Black")
-        self.CpuCores = ft.Text(f"Cores: {cpu['cores']}", size=16, color="Black")
-        self.CpuTdp = ft.Text(f"TDP: {cpu['tdp']}", size=16, color="Black")
-        self.CpuBench = ft.Text(f"BenchMark: {cpu['bench']}", size=16, color="Black")
-        self.CpuPrice = ft.Text(f"Price: {cpu['price']}$", size=16, color="Green", weight=ft.FontWeight.BOLD)
-
         cpu_card = ft.Card(
             content=ft.Container(
                 content=ft.Column(
                     controls=[
                         ft.Text("CPU", size=18, color="Blue", weight=ft.FontWeight.BOLD),
-                        self.CpuTitle,
-                        self.CpuSocket,
-                        self.CpuCores,
-                        self.CpuTdp,
-                        self.CpuBench,
-                        self.CpuPrice,
+                        ft.Text(cpu["name"], size=24, color="Black", weight=ft.FontWeight.BOLD),
+                        ft.Text(f"Socket: {cpu['socket']}", size=16, color="Black"),
+                        ft.Text(f"Cores: {cpu['cores']}", size=16, color="Black"),
+                        ft.Text(f"TDP: {cpu['tdp']} W", size=16, color="Black"),
+                        ft.Text(f"BenchMark: {cpu['bench']}", size=16, color="Black"),
+                        ft.Text(f"Price: {cpu['price']}$", size=16, color="Green", weight=ft.FontWeight.BOLD),
                     ],
                     spacing=5
                 ),
@@ -44,22 +37,16 @@ class FinalPage:
 
         ####### GPU #######
         gpu = out["gpu"]
-        self.GpuTitle = ft.Text(gpu["name"], size=24, color="Black", weight=ft.FontWeight.BOLD)
-        self.GpuBench3d = ft.Text(f"BenchMark3D: {gpu['bench3d']}", size=16, color="Black")
-        self.GpuBench2d = ft.Text(f"BenchMark2D: {gpu['bench2d']}", size=16, color="Black")
-        self.GpuTdp = ft.Text(f"TDP: {gpu['tdp']}", size=16, color="Black")
-        self.GpuPrice = ft.Text(f"Price: {gpu['price']}$", size=16, color="Green", weight=ft.FontWeight.BOLD)
-
         gpu_card = ft.Card(
             content=ft.Container(
                 content=ft.Column(
                     controls=[
                         ft.Text("GPU", size=18, color="Blue", weight=ft.FontWeight.BOLD),
-                        self.GpuTitle,
-                        self.GpuBench3d,
-                        self.GpuBench2d,
-                        self.GpuTdp,
-                        self.GpuPrice,
+                        ft.Text(gpu["name"], size=24, color="Black", weight=ft.FontWeight.BOLD),
+                        ft.Text(f"BenchMark3D: {gpu['bench3d']}", size=16, color="Black"),
+                        ft.Text(f"BenchMark2D: {gpu['bench2d']}", size=16, color="Black"),
+                        ft.Text(f"TDP: {gpu['tdp']} W", size=16, color="Black"),
+                        ft.Text(f"Price: {gpu['price']}$", size=16, color="Green", weight=ft.FontWeight.BOLD),
                     ],
                     spacing=5
                 ),
@@ -72,18 +59,16 @@ class FinalPage:
 
         ####### Motherboard #######
         mb = out["motherboard"]
-        self.MbTitle = ft.Text(mb["name"], size=24, color="Black", weight=ft.FontWeight.BOLD)
-        self.MbChipset = ft.Text(f"Chipset: {mb['chipset']}", size=16, color="Black")
-        self.MbSocket = ft.Text(f"Socket: {mb['socket']}", size=16, color="Black")
-
         mb_card = ft.Card(
             content=ft.Container(
                 content=ft.Column(
                     controls=[
                         ft.Text("Motherboard", size=18, color="Blue", weight=ft.FontWeight.BOLD),
-                        self.MbTitle,
-                        self.MbChipset,
-                        self.MbSocket,
+                        ft.Text(mb["name"], size=24, color="Black", weight=ft.FontWeight.BOLD),
+                        ft.Text(f"Chipset: {mb['chipset']}", size=16, color="Black"),
+                        ft.Text(f"Socket: {mb['socket']}", size=16, color="Black"),
+                        ft.Text(f"Max RAM: {mb['maxRam']} GB", size=16, color="Black"),
+                        ft.Text(f"Price: {mb['price']}$", size=16, color="Green", weight=ft.FontWeight.BOLD),
                     ],
                     spacing=5
                 ),
@@ -92,7 +77,71 @@ class FinalPage:
                 border_radius=8
             ),
             width=self.page.width
-            
+        )
+
+        ####### RAM #######
+        ram = out["ram"]
+        ram_card = ft.Card(
+            content=ft.Container(
+                content=ft.Column(
+                    controls=[
+                        ft.Text("RAM", size=18, color="Blue", weight=ft.FontWeight.BOLD),
+                        ft.Text(ram["name"], size=24, color="Black", weight=ft.FontWeight.BOLD),
+                        ft.Text(f"Type: {ram['type']}", size=16, color="Black"),
+                        ft.Text(f"Capacity: {ram['capacity']} GB x {ram['count']}", size=16, color="Black"),
+                        ft.Text(f"Frequency: {ram['freq']} MHz", size=16, color="Black"),
+                        ft.Text(f"Price: {ram['price']}$", size=16, color="Green", weight=ft.FontWeight.BOLD),
+                    ],
+                    spacing=5
+                ),
+                padding=10,
+                bgcolor="#F5F5F5",
+                border_radius=8
+            ),
+            width=self.page.width
+        )
+
+        ####### ROM #######
+        rom = out["rom"]
+        rom_card = ft.Card(
+            content=ft.Container(
+                content=ft.Column(
+                    controls=[
+                        ft.Text("Storage (ROM)", size=18, color="Blue", weight=ft.FontWeight.BOLD),
+                        ft.Text(rom["name"], size=24, color="Black", weight=ft.FontWeight.BOLD),
+                        ft.Text(f"Type: {rom['type']}", size=16, color="Black"),
+                        ft.Text(f"Capacity: {rom['capacity']} GB", size=16, color="Black"),
+                        ft.Text(f"BenchMark: {rom['bench']}", size=16, color="Black"),
+                        ft.Text(f"Price: {rom['price']}$", size=16, color="Green", weight=ft.FontWeight.BOLD),
+                    ],
+                    spacing=5
+                ),
+                padding=10,
+                bgcolor="#F5F5F5",
+                border_radius=8
+            ),
+            width=self.page.width
+        )
+
+        ####### PSU #######
+        psu = out["psu"]
+        psu_card = ft.Card(
+            content=ft.Container(
+                content=ft.Column(
+                    controls=[
+                        ft.Text("Power Supply (PSU)", size=18, color="Blue", weight=ft.FontWeight.BOLD),
+                        ft.Text(psu["name"], size=24, color="Black", weight=ft.FontWeight.BOLD),
+                        ft.Text(f"Power: {psu['power']} W", size=16, color="Black"),
+                        ft.Text(f"Fan: {psu['fan']} mm", size=16, color="Black"),
+                        ft.Text(f"Price: {psu['price']}$", size=16, color="Green", weight=ft.FontWeight.BOLD),
+                    ],
+                    spacing=5
+                ),
+                padding=10,
+                bgcolor="#F5F5F5",
+                border_radius=8
+            ),
+            width=self.page.width
         )
 
         ####### Layout #######
@@ -101,6 +150,9 @@ class FinalPage:
                 cpu_card,
                 gpu_card,
                 mb_card,
+                ram_card,
+                rom_card,
+                psu_card,
                 ft.ElevatedButton(
                     text="Back to Main",
                     on_click=lambda e: self.page.go("/"),
