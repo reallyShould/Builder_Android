@@ -24,7 +24,7 @@ class FinalPage:
                         ft.Text(f"Cores: {cpu['cores']}", size=16, color="Black"),
                         ft.Text(f"TDP: {cpu['tdp']} W", size=16, color="Black"),
                         ft.Text(f"BenchMark: {cpu['bench']}", size=16, color="Black"),
-                        ft.Text(f"Price: {cpu['price']}$", size=16, color="Green", weight=ft.FontWeight.BOLD),
+                        ft.Text(f"Price: {cpu['price']}₽", size=16, color="Green", weight=ft.FontWeight.BOLD),
                     ],
                     spacing=5
                 ),
@@ -46,7 +46,7 @@ class FinalPage:
                         ft.Text(f"BenchMark3D: {gpu['bench3d']}", size=16, color="Black"),
                         ft.Text(f"BenchMark2D: {gpu['bench2d']}", size=16, color="Black"),
                         ft.Text(f"TDP: {gpu['tdp']} W", size=16, color="Black"),
-                        ft.Text(f"Price: {gpu['price']}$", size=16, color="Green", weight=ft.FontWeight.BOLD),
+                        ft.Text(f"Price: {gpu['price']}₽", size=16, color="Green", weight=ft.FontWeight.BOLD),
                     ],
                     spacing=5
                 ),
@@ -68,7 +68,7 @@ class FinalPage:
                         ft.Text(f"Chipset: {mb['chipset']}", size=16, color="Black"),
                         ft.Text(f"Socket: {mb['socket']}", size=16, color="Black"),
                         ft.Text(f"Max RAM: {mb['maxRam']} GB", size=16, color="Black"),
-                        ft.Text(f"Price: {mb['price']}$", size=16, color="Green", weight=ft.FontWeight.BOLD),
+                        ft.Text(f"Price: {mb['price']}₽", size=16, color="Green", weight=ft.FontWeight.BOLD),
                     ],
                     spacing=5
                 ),
@@ -90,7 +90,7 @@ class FinalPage:
                         ft.Text(f"Type: {ram['type']}", size=16, color="Black"),
                         ft.Text(f"Capacity: {ram['capacity']} GB x {ram['count']}", size=16, color="Black"),
                         ft.Text(f"Frequency: {ram['freq']} MHz", size=16, color="Black"),
-                        ft.Text(f"Price: {ram['price']}$", size=16, color="Green", weight=ft.FontWeight.BOLD),
+                        ft.Text(f"Price: {ram['price']}₽", size=16, color="Green", weight=ft.FontWeight.BOLD),
                     ],
                     spacing=5
                 ),
@@ -112,7 +112,7 @@ class FinalPage:
                         ft.Text(f"Type: {rom['type']}", size=16, color="Black"),
                         ft.Text(f"Capacity: {rom['capacity']} GB", size=16, color="Black"),
                         ft.Text(f"BenchMark: {rom['bench']}", size=16, color="Black"),
-                        ft.Text(f"Price: {rom['price']}$", size=16, color="Green", weight=ft.FontWeight.BOLD),
+                        ft.Text(f"Price: {rom['price']}₽", size=16, color="Green", weight=ft.FontWeight.BOLD),
                     ],
                     spacing=5
                 ),
@@ -133,7 +133,7 @@ class FinalPage:
                         ft.Text(psu["name"], size=24, color="Black", weight=ft.FontWeight.BOLD),
                         ft.Text(f"Power: {psu['power']} W", size=16, color="Black"),
                         ft.Text(f"Fan: {psu['fan']} mm", size=16, color="Black"),
-                        ft.Text(f"Price: {psu['price']}$", size=16, color="Green", weight=ft.FontWeight.BOLD),
+                        ft.Text(f"Price: {psu['price']}₽", size=16, color="Green", weight=ft.FontWeight.BOLD),
                     ],
                     spacing=5
                 ),
@@ -142,6 +142,15 @@ class FinalPage:
                 border_radius=8
             ),
             width=self.page.width
+        )
+
+        back_btn = ft.CupertinoButton(
+                    content=ft.Text("To main", color="white", font_family="Verdana"),
+                    bgcolor="black",
+                    border_radius=ft.border_radius.all(3),
+                    opacity_on_click=0.5,
+                    on_click=lambda e: self.page.go("/"),
+                    width=self.page.width,
         )
 
         ####### Layout #######
@@ -153,15 +162,12 @@ class FinalPage:
                 ram_card,
                 rom_card,
                 psu_card,
-                ft.ElevatedButton(
-                    text="Back to Main",
-                    on_click=lambda e: self.page.go("/"),
-                    bgcolor="Blue",
-                    color="White",
-                )
+                back_btn
             ],
             spacing=20,
-            horizontal_alignment="center"
+            horizontal_alignment="center",
+            expand=True,
+            scroll=ft.ScrollMode.ALWAYS
         )
 
         return ft.View("/final", controls=[col], bgcolor="#FFFFFF")
